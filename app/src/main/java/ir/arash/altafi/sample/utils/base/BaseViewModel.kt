@@ -1,4 +1,4 @@
-package com.arash.altafi.mvisample.utils.base
+package ir.arash.altafi.sample.utils.base
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

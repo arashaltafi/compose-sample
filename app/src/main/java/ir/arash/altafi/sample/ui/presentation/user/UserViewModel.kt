@@ -2,7 +2,7 @@ package ir.arash.altafi.sample.ui.presentation.user
 
 import androidx.lifecycle.viewModelScope
 import ir.arash.altafi.sample.data.repository.UserRepository
-import com.arash.altafi.mvisample.utils.base.BaseViewModel
+import ir.arash.altafi.sample.utils.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
