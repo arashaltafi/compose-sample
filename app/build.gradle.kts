@@ -43,6 +43,14 @@ dependencies {
     // animated navigation bar
     implementation(libs.animated.navigation.bar)
 
+    // Material
+    implementation(libs.androidx.material3)
+    implementation(libs.androidx.material)
+    implementation(libs.androidx.material.icons.extended.android)
+
+    // foundation
+    implementation(libs.androidx.compose.foundation)
+
     // androidx
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

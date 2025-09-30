@@ -2,9 +2,5 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Melodyo" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/MusicPlayer" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/mvi-sample" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/visualizer_music" vcs="Git" />
   </component>
 </project>

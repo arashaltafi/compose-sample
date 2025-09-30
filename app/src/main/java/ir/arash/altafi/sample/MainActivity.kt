@@ -19,6 +19,7 @@ import com.exyte.animatednavbar.animation.balltrajectory.Parabolic
 import com.exyte.animatednavbar.animation.indendshape.Height
 import com.exyte.animatednavbar.animation.indendshape.shapeCornerRadius
 import com.exyte.animatednavbar.items.dropletbutton.DropletButton
+import ir.arash.altafi.sample.dialogs.FloatingBottomNavBar
 import ir.arash.altafi.sample.ui.theme.Green500
 import ir.arash.altafi.sample.ui.theme.Red500
 import ir.arash.altafi.sample.ui.theme.SampleTheme
@@ -34,7 +35,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             SampleTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { _ ->
-                    MyApp()
+//                    MyApp()
+                    FloatingBottomNavBar()
                 }
             }
         }
