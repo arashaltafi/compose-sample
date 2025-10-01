@@ -23,6 +23,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import ir.arash.altafi.sample.ui.presentation.celebrity.CelebrityScreen
+import ir.arash.altafi.sample.ui.presentation.paging.PagingScreen
+import ir.arash.altafi.sample.ui.presentation.user.UserScreen
 import kotlinx.coroutines.launch
 
 enum class FloatingBottomNavItem(val title: String, val icon: Any) {
@@ -55,12 +58,17 @@ fun FloatingBottomNavBar(navController: NavHostController) {
                     ),
                 contentAlignment = Alignment.Center
             ) {
-                Text(
-                    text = "Screen: ${FloatingBottomNavItem.entries[page].title}",
-                    fontSize = 24.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Color(0xFF333333)
-                )
+                when (FloatingBottomNavItem.entries[page]) {
+                    FloatingBottomNavItem.Settings -> {
+                        UserScreen(navController)
+                    }
+                    FloatingBottomNavItem.Scanner -> {
+                        CelebrityScreen(navController)
+                    }
+                    FloatingBottomNavItem.Library -> {
+                        PagingScreen(navController)
+                    }
+                }
             }
         }
 
@@ -68,8 +76,10 @@ fun FloatingBottomNavBar(navController: NavHostController) {
         Row(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
-                .padding(bottom = 24.dp)
-                .shadow(12.dp, shape = RoundedCornerShape(24.dp))
+                .padding(horizontal = 24.dp)
+                .fillMaxWidth()
+                .padding(bottom = 6.dp)
+                .shadow(8.dp, shape = RoundedCornerShape(12.dp))
                 .background(Color(0xFFF8F6F0), shape = RoundedCornerShape(24.dp))
                 .padding(horizontal = 24.dp, vertical = 12.dp),
             horizontalArrangement = Arrangement.SpaceEvenly,
