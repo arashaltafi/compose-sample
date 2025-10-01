@@ -17,6 +17,11 @@ sealed interface Route {
     }
 
     @Serializable
+    data object FloatingBottomNavBar : Route {
+        override val route: String = ".ui.navigation.Route.FloatingBottomNavBar"
+    }
+
+    @Serializable
     data object Main2 : Route {
         override val route: String = ".ui.navigation.Route.Main2"
     }

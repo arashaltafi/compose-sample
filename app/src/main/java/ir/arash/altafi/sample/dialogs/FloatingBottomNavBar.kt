@@ -22,6 +22,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import kotlinx.coroutines.launch
 
 enum class FloatingBottomNavItem(val title: String, val icon: Any) {
@@ -32,7 +33,7 @@ enum class FloatingBottomNavItem(val title: String, val icon: Any) {
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun FloatingBottomNavBar() {
+fun FloatingBottomNavBar(navController: NavHostController) {
     val pagerState = rememberPagerState(pageCount = { FloatingBottomNavItem.entries.size })
     val scope = rememberCoroutineScope()
 

@@ -43,6 +43,7 @@ import com.arash.altafi.mvisample.ui.component.ImageScreen
 import ir.arash.altafi.sample.ui.presentation.celebrity.CelebrityScreen
 import com.arash.altafi.mvisample.ui.presentation.main.MainScreen
 import ir.arash.altafi.sample.R
+import ir.arash.altafi.sample.dialogs.FloatingBottomNavBar
 import ir.arash.altafi.sample.ui.component.ImageUrl
 import ir.arash.altafi.sample.ui.presentation.main.MainScreen2
 import ir.arash.altafi.sample.ui.presentation.paging.PagingScreen
@@ -251,176 +252,172 @@ fun AppNavigation() {
                 modifier = Modifier
                     .fillMaxSize(),
                 topBar = {
-                    if (true /*currentDestination in allowTopBar*/) {
-                        @OptIn(ExperimentalMaterial3Api::class)
-                        TopAppBar(
-                            modifier = Modifier
-                                .clip(RoundedCornerShape(bottomEnd = 10.dp, bottomStart = 10.dp)),
-                            title = {
-                                Row(verticalAlignment = Alignment.CenterVertically) {
-                                    if (!isConnected) {
-                                        Icon(
-                                            imageVector = Icons.Filled.Error,
-                                            contentDescription = "No internet connection",
-                                            tint = Color.Red
-                                        )
-                                    }
-                                    val title = context.getString(R.string.app_name)
-                                    Text(
-                                        text = title,
-                                        color = Color.White,
-                                        fontFamily = CustomFont
+                    @OptIn(ExperimentalMaterial3Api::class)
+                    TopAppBar(
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(bottomEnd = 10.dp, bottomStart = 10.dp)),
+                        title = {
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                if (!isConnected) {
+                                    Icon(
+                                        imageVector = Icons.Filled.Error,
+                                        contentDescription = "No internet connection",
+                                        tint = Color.Red
                                     )
                                 }
-                            },
-                            navigationIcon = {
-                                if (true /*currentDestination in allowBottomBar*/) {
-                                    Row {
-                                        IconButton(
-                                            onClick = {
-                                                coroutineScope.launch {
-                                                    drawerState.open()
-                                                }
-                                            }
-                                        ) {
-                                            Icon(
-                                                imageVector = Icons.Filled.Menu,
-                                                contentDescription = "Menu",
-                                                tint = Color.White
-                                            )
-                                        }
-                                    }
-                                }
-                            },
-                            actions = {
+                                val title = context.getString(R.string.app_name)
+                                Text(
+                                    text = title,
+                                    color = Color.White,
+                                    fontFamily = CustomFont
+                                )
+                            }
+                        },
+                        navigationIcon = {
+                            if (true /*currentDestination in allowBottomBar*/) {
                                 Row {
                                     IconButton(
                                         onClick = {
-//                                            dataStoreViewModel.changeTheme()
+                                            coroutineScope.launch {
+                                                drawerState.open()
+                                            }
                                         }
                                     ) {
                                         Icon(
-                                            painter = painterResource(id = if (theme == "dark") R.drawable.round_light_mode_24 else R.drawable.round_dark_mode_24),
-                                            contentDescription = if (theme == "dark") "Switch to Light Theme" else "Switch to Dark Theme",
-                                            tint = Color.White
-                                        )
-                                    }
-                                    IconButton(
-                                        onClick = {
-                                            if (currentDestination !in allowBottomBar) {
-                                                navController.popBackStack()
-                                            } else if (navController.previousBackStackEntry != null) {
-                                                // Pop the backstack if there is a previous route
-                                                navController.popBackStack()
-                                                navigationSelectedItem = 0
-                                            } else {
-                                                // Handle double back press to exit the app
-                                                if (doubleBackToExitPressedOnce) {
-                                                    // Exit the app if back is pressed twice within 5 seconds
-                                                    activity?.finish()
-                                                } else {
-                                                    // Show the toast message and start a 5-second timer
-                                                    doubleBackToExitPressedOnce = true
-                                                    Toast.makeText(
-                                                        context,
-                                                        "برای خروج یک بار دیگر دکمه برگشت را بزنید",
-                                                        Toast.LENGTH_SHORT
-                                                    )
-                                                        .show()
-
-                                                    // Reset the flag after 5 seconds using coroutine
-                                                    coroutineScope.launch {
-                                                        delay(5000)  // 5-second delay
-                                                        doubleBackToExitPressedOnce = false
-                                                    }
-                                                }
-                                            }
-                                        },
-                                    ) {
-                                        Icon(
-                                            modifier = Modifier.rotate(180f),
-                                            painter = painterResource(id = R.drawable.round_arrow_back_24),
-                                            contentDescription = "Back",
+                                            imageVector = Icons.Filled.Menu,
+                                            contentDescription = "Menu",
                                             tint = Color.White
                                         )
                                     }
                                 }
-                            },
-                            colors = TopAppBarDefaults.topAppBarColors(
-                                containerColor = colorResource(R.color.blue_300),
-                                titleContentColor = Color.White,
-                            )
-                        )
-                    }
-                },
-                bottomBar = {
-                    if (true /*currentDestination in allowBottomBar*/) {
-                        AnimatedVisibility(
-                            visible = !isScrolled,
-                            enter = fadeIn() + expandHorizontally() + slideInHorizontally(),
-                            exit = fadeOut() + shrinkHorizontally() + slideOutHorizontally()
-                        ) {
-                            NavigationBar(
-                                modifier = Modifier
-                                    .clip(RoundedCornerShape(topEnd = 10.dp, topStart = 10.dp)),
-                                containerColor = colorResource(R.color.blue_300),
-                            ) {
-                                //getting the list of bottom navigation items for our data class
-                                bottomNavigationItems().forEachIndexed { index, navigationItem ->
-                                    NavigationBarItem(
-                                        selected = index == navigationSelectedItem,
-                                        label = {
-                                            Text(
-                                                text = context.getString(navigationItem.label),
-                                                fontFamily = CustomFont
-                                            )
-                                        },
-                                        icon = {
-                                            BadgedBox(
-                                                badge = {
-                                                    if (navigationItem.badgeCount != 0) {
-                                                        Badge(
-                                                            containerColor = Color.White,
-                                                            modifier = Modifier.border(
-                                                                1.dp,
-                                                                Color.Magenta,
-                                                                CircleShape
-                                                            )
-                                                        ) {
-                                                            Text(
-                                                                text = navigationItem.badgeCount.toString(),
-                                                                fontFamily = CustomFont,
-                                                                color = Color.Black
-                                                            )
-                                                        }
-                                                    }
-                                                },
-                                            ) {
-                                                Icon(
-                                                    painter = painterResource(id = navigationItem.icon),
-                                                    contentDescription = context.getString(
-                                                        navigationItem.label
-                                                    ),
+                            }
+                        },
+                        actions = {
+                            Row {
+                                IconButton(
+                                    onClick = {
+//                                            dataStoreViewModel.changeTheme()
+                                    }
+                                ) {
+                                    Icon(
+                                        painter = painterResource(id = if (theme == "dark") R.drawable.round_light_mode_24 else R.drawable.round_dark_mode_24),
+                                        contentDescription = if (theme == "dark") "Switch to Light Theme" else "Switch to Dark Theme",
+                                        tint = Color.White
+                                    )
+                                }
+                                IconButton(
+                                    onClick = {
+                                        if (currentDestination !in allowBottomBar) {
+                                            navController.popBackStack()
+                                        } else if (navController.previousBackStackEntry != null) {
+                                            // Pop the backstack if there is a previous route
+                                            navController.popBackStack()
+                                            navigationSelectedItem = 0
+                                        } else {
+                                            // Handle double back press to exit the app
+                                            if (doubleBackToExitPressedOnce) {
+                                                // Exit the app if back is pressed twice within 5 seconds
+                                                activity?.finish()
+                                            } else {
+                                                // Show the toast message and start a 5-second timer
+                                                doubleBackToExitPressedOnce = true
+                                                Toast.makeText(
+                                                    context,
+                                                    "برای خروج یک بار دیگر دکمه برگشت را بزنید",
+                                                    Toast.LENGTH_SHORT
                                                 )
+                                                    .show()
+
+                                                // Reset the flag after 5 seconds using coroutine
+                                                coroutineScope.launch {
+                                                    delay(5000)  // 5-second delay
+                                                    doubleBackToExitPressedOnce = false
+                                                }
                                             }
-                                        },
-                                        onClick = {
-                                            if (index != 1) navigationSelectedItem = index
-                                            navController.navigate(navigationItem.route)
-                                        },
-                                        colors = NavigationBarItemDefaults.colors(
-                                            selectedIconColor = Color.Magenta,
-                                            selectedTextColor = Color.Magenta,
-                                            unselectedIconColor = Color.White,
-                                            unselectedTextColor = Color.White,
-                                            indicatorColor = Color.Transparent
-                                        )
+                                        }
+                                    },
+                                ) {
+                                    Icon(
+                                        modifier = Modifier.rotate(180f),
+                                        painter = painterResource(id = R.drawable.round_arrow_back_24),
+                                        contentDescription = "Back",
+                                        tint = Color.White
                                     )
                                 }
                             }
-                        }
-                    }
+                        },
+                        colors = TopAppBarDefaults.topAppBarColors(
+                            containerColor = colorResource(R.color.blue_300),
+                            titleContentColor = Color.White,
+                        )
+                    )
                 },
+//                bottomBar = {
+//                    AnimatedVisibility(
+//                        visible = !isScrolled,
+//                        enter = fadeIn() + expandHorizontally() + slideInHorizontally(),
+//                        exit = fadeOut() + shrinkHorizontally() + slideOutHorizontally()
+//                    ) {
+//                        NavigationBar(
+//                            modifier = Modifier
+//                                .clip(RoundedCornerShape(topEnd = 10.dp, topStart = 10.dp)),
+//                            containerColor = colorResource(R.color.blue_300),
+//                        ) {
+//                            //getting the list of bottom navigation items for our data class
+//                            bottomNavigationItems().forEachIndexed { index, navigationItem ->
+//                                NavigationBarItem(
+//                                    selected = index == navigationSelectedItem,
+//                                    label = {
+//                                        Text(
+//                                            text = context.getString(navigationItem.label),
+//                                            fontFamily = CustomFont
+//                                        )
+//                                    },
+//                                    icon = {
+//                                        BadgedBox(
+//                                            badge = {
+//                                                if (navigationItem.badgeCount != 0) {
+//                                                    Badge(
+//                                                        containerColor = Color.White,
+//                                                        modifier = Modifier.border(
+//                                                            1.dp,
+//                                                            Color.Magenta,
+//                                                            CircleShape
+//                                                        )
+//                                                    ) {
+//                                                        Text(
+//                                                            text = navigationItem.badgeCount.toString(),
+//                                                            fontFamily = CustomFont,
+//                                                            color = Color.Black
+//                                                        )
+//                                                    }
+//                                                }
+//                                            },
+//                                        ) {
+//                                            Icon(
+//                                                painter = painterResource(id = navigationItem.icon),
+//                                                contentDescription = context.getString(
+//                                                    navigationItem.label
+//                                                ),
+//                                            )
+//                                        }
+//                                    },
+//                                    onClick = {
+//                                        if (index != 1) navigationSelectedItem = index
+//                                        navController.navigate(navigationItem.route)
+//                                    },
+//                                    colors = NavigationBarItemDefaults.colors(
+//                                        selectedIconColor = Color.Magenta,
+//                                        selectedTextColor = Color.Magenta,
+//                                        unselectedIconColor = Color.White,
+//                                        unselectedTextColor = Color.White,
+//                                        indicatorColor = Color.Transparent
+//                                    )
+//                                )
+//                            }
+//                        }
+//                    }
+//                },
                 floatingActionButton = {
                     AnimatedVisibility(visible = fabVisible) {
                         FloatingActionButton(
@@ -443,9 +440,12 @@ fun AppNavigation() {
             ) { innerPadding ->
                 NavHost(
                     navController = navController,
-                    startDestination = Route.Main,
+                    startDestination = Route.FloatingBottomNavBar,
                     modifier = Modifier.padding(innerPadding)
                 ) {
+                    composable<Route.FloatingBottomNavBar> {
+                        FloatingBottomNavBar(navController)
+                    }
                     composable<Route.Main> {
                         MainScreen(navController)
                     }
