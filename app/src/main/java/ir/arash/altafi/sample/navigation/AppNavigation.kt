@@ -14,6 +14,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -352,72 +354,72 @@ fun AppNavigation() {
                         )
                     )
                 },
-//                bottomBar = {
-//                    AnimatedVisibility(
-//                        visible = !isScrolled,
-//                        enter = fadeIn() + expandHorizontally() + slideInHorizontally(),
-//                        exit = fadeOut() + shrinkHorizontally() + slideOutHorizontally()
-//                    ) {
-//                        NavigationBar(
-//                            modifier = Modifier
-//                                .clip(RoundedCornerShape(topEnd = 10.dp, topStart = 10.dp)),
-//                            containerColor = colorResource(R.color.blue_300),
-//                        ) {
-//                            //getting the list of bottom navigation items for our data class
-//                            bottomNavigationItems().forEachIndexed { index, navigationItem ->
-//                                NavigationBarItem(
-//                                    selected = index == navigationSelectedItem,
-//                                    label = {
-//                                        Text(
-//                                            text = context.getString(navigationItem.label),
-//                                            fontFamily = CustomFont
-//                                        )
-//                                    },
-//                                    icon = {
-//                                        BadgedBox(
-//                                            badge = {
-//                                                if (navigationItem.badgeCount != 0) {
-//                                                    Badge(
-//                                                        containerColor = Color.White,
-//                                                        modifier = Modifier.border(
-//                                                            1.dp,
-//                                                            Color.Magenta,
-//                                                            CircleShape
-//                                                        )
-//                                                    ) {
-//                                                        Text(
-//                                                            text = navigationItem.badgeCount.toString(),
-//                                                            fontFamily = CustomFont,
-//                                                            color = Color.Black
-//                                                        )
-//                                                    }
-//                                                }
-//                                            },
-//                                        ) {
-//                                            Icon(
-//                                                painter = painterResource(id = navigationItem.icon),
-//                                                contentDescription = context.getString(
-//                                                    navigationItem.label
-//                                                ),
-//                                            )
-//                                        }
-//                                    },
-//                                    onClick = {
-//                                        if (index != 1) navigationSelectedItem = index
-//                                        navController.navigate(navigationItem.route)
-//                                    },
-//                                    colors = NavigationBarItemDefaults.colors(
-//                                        selectedIconColor = Color.Magenta,
-//                                        selectedTextColor = Color.Magenta,
-//                                        unselectedIconColor = Color.White,
-//                                        unselectedTextColor = Color.White,
-//                                        indicatorColor = Color.Transparent
-//                                    )
-//                                )
-//                            }
-//                        }
-//                    }
-//                },
+                bottomBar = {
+                    AnimatedVisibility(
+                        visible = !isScrolled,
+                        enter = fadeIn() + expandHorizontally() + slideInHorizontally(),
+                        exit = fadeOut() + shrinkHorizontally() + slideOutHorizontally()
+                    ) {
+                        NavigationBar(
+                            modifier = Modifier
+                                .clip(RoundedCornerShape(topEnd = 10.dp, topStart = 10.dp)),
+                            containerColor = colorResource(R.color.blue_300),
+                        ) {
+                            //getting the list of bottom navigation items for our data class
+                            bottomNavigationItems().forEachIndexed { index, navigationItem ->
+                                NavigationBarItem(
+                                    selected = index == navigationSelectedItem,
+                                    label = {
+                                        Text(
+                                            text = context.getString(navigationItem.label),
+                                            fontFamily = CustomFont
+                                        )
+                                    },
+                                    icon = {
+                                        BadgedBox(
+                                            badge = {
+                                                if (navigationItem.badgeCount != 0) {
+                                                    Badge(
+                                                        containerColor = Color.White,
+                                                        modifier = Modifier.border(
+                                                            1.dp,
+                                                            Color.Magenta,
+                                                            CircleShape
+                                                        )
+                                                    ) {
+                                                        Text(
+                                                            text = navigationItem.badgeCount.toString(),
+                                                            fontFamily = CustomFont,
+                                                            color = Color.Black
+                                                        )
+                                                    }
+                                                }
+                                            },
+                                        ) {
+                                            Icon(
+                                                painter = painterResource(id = navigationItem.icon),
+                                                contentDescription = context.getString(
+                                                    navigationItem.label
+                                                ),
+                                            )
+                                        }
+                                    },
+                                    onClick = {
+                                        if (index != 1) navigationSelectedItem = index
+                                        navController.navigate(navigationItem.route)
+                                    },
+                                    colors = NavigationBarItemDefaults.colors(
+                                        selectedIconColor = Color.Magenta,
+                                        selectedTextColor = Color.Magenta,
+                                        unselectedIconColor = Color.White,
+                                        unselectedTextColor = Color.White,
+                                        indicatorColor = Color.Transparent
+                                    )
+                                )
+                            }
+                        }
+                    }
+                },
                 floatingActionButton = {
                     AnimatedVisibility(visible = fabVisible) {
                         FloatingActionButton(
@@ -440,7 +442,7 @@ fun AppNavigation() {
             ) { innerPadding ->
                 NavHost(
                     navController = navController,
-                    startDestination = Route.FloatingBottomNavBar,
+                    startDestination = Route.Celebrity,
                     modifier = Modifier.padding(innerPadding)
                 ) {
                     composable<Route.FloatingBottomNavBar> {

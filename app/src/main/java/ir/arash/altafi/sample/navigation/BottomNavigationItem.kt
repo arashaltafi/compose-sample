@@ -14,19 +14,19 @@ fun bottomNavigationItems(): List<BottomNavigationItem> {
         BottomNavigationItem(
             label = R.string.dialog,
             icon = R.drawable.ic_home,
-            route = Route.Main,
+            route = Route.Celebrity,
             badgeCount = 0
         ),
         BottomNavigationItem(
             label = R.string.profile,
             icon = R.drawable.ic_profile,
-            route = Route.User,
+            route = Route.Paging,
             badgeCount = 0
         ),
         BottomNavigationItem(
             label = R.string.chat_room,
             icon = R.drawable.ic_notification,
-            route = Route.Paging,
+            route = Route.TestList,
             badgeCount = 0
         ),
         BottomNavigationItem(
