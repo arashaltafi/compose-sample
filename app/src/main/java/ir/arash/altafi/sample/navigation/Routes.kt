@@ -58,27 +58,27 @@ sealed interface Route {
 
     @Serializable
     data class TestDetail(var userId: String) : Route {
-        override val route: String = ".ui.navigation.Route.TestDetail"
+        override val route: String = ".navigation.Route.TestDetail"
     }
 
     // bottom navigation
     @Serializable
     data object Home : Route {
-        override val route: String = ".ui.navigation.Route.Home"
+        override val route: String = ".navigation.Route.Home"
     }
 
     @Serializable
     data object Profile : Route {
-        override val route: String = ".ui.navigation.Route.Profile"
+        override val route: String = ".navigation.Route.Profile"
     }
 
     @Serializable
     data object Setting : Route {
-        override val route: String = ".ui.navigation.Route.Setting"
+        override val route: String = ".navigation.Route.Setting"
     }
 
     @Serializable
     data object Test : Route {
-        override val route: String = ".ui.navigation.Route.Test"
+        override val route: String = ".navigation.Route.Test"
     }
 }
