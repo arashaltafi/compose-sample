@@ -45,10 +45,13 @@ import com.arash.altafi.mvisample.ui.component.ImageScreen
 import ir.arash.altafi.sample.ui.presentation.celebrity.CelebrityScreen
 import com.arash.altafi.mvisample.ui.presentation.main.MainScreen
 import ir.arash.altafi.sample.R
-import ir.arash.altafi.sample.dialogs.FloatingBottomNavBar
 import ir.arash.altafi.sample.ui.component.ImageUrl
+import ir.arash.altafi.sample.ui.presentation.home.HomeScreen
 import ir.arash.altafi.sample.ui.presentation.main.MainScreen2
 import ir.arash.altafi.sample.ui.presentation.paging.PagingScreen
+import ir.arash.altafi.sample.ui.presentation.profile.ProfileScreen
+import ir.arash.altafi.sample.ui.presentation.setting.SettingScreen
+import ir.arash.altafi.sample.ui.presentation.test.TestScreen
 import ir.arash.altafi.sample.ui.presentation.testDetail.TestDetail
 import ir.arash.altafi.sample.ui.presentation.testList.TestList
 import ir.arash.altafi.sample.ui.presentation.testPagingList.TestPagingList
@@ -194,6 +197,7 @@ fun AppNavigation() {
                                     onClick = {
                                         navController.navigate(item.route)
                                         selectedItemIndex = index
+                                        navigationSelectedItem = index
                                         coroutineScope.launch {
                                             drawerState.close()
                                         }
@@ -442,11 +446,20 @@ fun AppNavigation() {
             ) { innerPadding ->
                 NavHost(
                     navController = navController,
-                    startDestination = Route.Celebrity,
+                    startDestination = Route.Home,
                     modifier = Modifier.padding(innerPadding)
                 ) {
-                    composable<Route.FloatingBottomNavBar> {
-                        FloatingBottomNavBar(navController)
+                    composable<Route.Home> {
+                        HomeScreen(navController)
+                    }
+                    composable<Route.Profile> {
+                        ProfileScreen(navController)
+                    }
+                    composable<Route.Setting> {
+                        SettingScreen(navController)
+                    }
+                    composable<Route.Test> {
+                        TestScreen(navController)
                     }
                     composable<Route.Main> {
                         MainScreen(navController)

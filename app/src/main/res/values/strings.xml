@@ -10,8 +10,12 @@
     <string name="save_in_gallery_error">هنگام ذخیره سازی تصویر خطایی رخ داده است.</string>
     <string name="logout">خروج</string>
     <string name="users">کاربران</string>
+
+    <string name="home">خانه</string>
+    <string name="test">تست</string>
     <string name="setting">تنظیمات</string>
     <string name="profile">پروفایل</string>
+
     <string name="chat">چت</string>
     <string name="dialog">گفتگو</string>
     <string name="chat_room">چت روم</string>

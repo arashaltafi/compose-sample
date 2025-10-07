@@ -20,11 +20,9 @@ import com.exyte.animatednavbar.animation.indendshape.Height
 import com.exyte.animatednavbar.animation.indendshape.shapeCornerRadius
 import com.exyte.animatednavbar.items.dropletbutton.DropletButton
 import dagger.hilt.android.AndroidEntryPoint
-import ir.arash.altafi.sample.dialogs.FloatingBottomNavBar
 import ir.arash.altafi.sample.navigation.AppNavigation
 import ir.arash.altafi.sample.ui.theme.Green500
 import ir.arash.altafi.sample.ui.theme.Red500
-import ir.arash.altafi.sample.ui.theme.SampleTheme
 import ir.arash.altafi.sample.ui.theme.White
 import ir.arash.altafi.sample.ui.theme.Yellow500
 import kotlinx.coroutines.delay

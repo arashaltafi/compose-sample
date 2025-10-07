@@ -11,24 +11,24 @@ data class NavigationDrawerItem(
 fun navigationDrawerItems(): List<NavigationDrawerItem> {
     return listOf(
         NavigationDrawerItem(
-            label = R.string.dialog,
+            label = R.string.home,
             icon = R.drawable.ic_home,
-            route = Route.Main,
+            route = Route.Home,
         ),
         NavigationDrawerItem(
             label = R.string.profile,
             icon = R.drawable.ic_profile,
-            route = Route.User,
+            route = Route.Profile,
         ),
         NavigationDrawerItem(
-            label = R.string.chat_room,
-            icon = R.drawable.ic_notification,
-            route = Route.Paging,
+            label = R.string.test,
+            icon = R.drawable.ic_test,
+            route = Route.Test,
         ),
         NavigationDrawerItem(
             label = R.string.setting,
             icon = R.drawable.ic_setting,
-            route = Route.Main2,
+            route = Route.Setting,
         ),
     )
 }

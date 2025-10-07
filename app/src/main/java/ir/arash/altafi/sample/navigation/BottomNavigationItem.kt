@@ -12,27 +12,27 @@ data class BottomNavigationItem(
 fun bottomNavigationItems(): List<BottomNavigationItem> {
     return listOf(
         BottomNavigationItem(
-            label = R.string.dialog,
+            label = R.string.home,
             icon = R.drawable.ic_home,
-            route = Route.Celebrity,
+            route = Route.Home,
+            badgeCount = 0
+        ),
+        BottomNavigationItem(
+            label = R.string.test,
+            icon = R.drawable.ic_test,
+            route = Route.Test,
             badgeCount = 0
         ),
         BottomNavigationItem(
             label = R.string.profile,
             icon = R.drawable.ic_profile,
-            route = Route.Paging,
-            badgeCount = 0
-        ),
-        BottomNavigationItem(
-            label = R.string.chat_room,
-            icon = R.drawable.ic_notification,
-            route = Route.TestList,
+            route = Route.Profile,
             badgeCount = 0
         ),
         BottomNavigationItem(
             label = R.string.setting,
             icon = R.drawable.ic_setting,
-            route = Route.Main2,
+            route = Route.Setting,
             badgeCount = 0
         ),
     )
