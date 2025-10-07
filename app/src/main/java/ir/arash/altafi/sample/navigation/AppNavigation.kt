@@ -325,7 +325,7 @@ fun AppNavigation() {
                                                 // Pop the backstack if there is a previous route
                                                 navigationSelectedItem = 0
                                                 navController.popBackStack()
-                                            } else {
+                                            } else if (isHome) {
                                                 // Handle double back press to exit the app
                                                 if (doubleBackToExitPressedOnce) {
                                                     // Exit the app if back is pressed twice within 5 seconds
@@ -346,6 +346,8 @@ fun AppNavigation() {
                                                         doubleBackToExitPressedOnce = false
                                                     }
                                                 }
+                                            } else {
+                                                navController.popBackStack()
                                             }
                                         },
                                     ) {
