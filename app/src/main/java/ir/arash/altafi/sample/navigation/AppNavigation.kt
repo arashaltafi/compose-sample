@@ -323,8 +323,8 @@ fun AppNavigation() {
                                                 navController.popBackStack()
                                             } else if (navController.previousBackStackEntry != null && navigationSelectedItem != 0) {
                                                 // Pop the backstack if there is a previous route
-                                                navController.popBackStack()
                                                 navigationSelectedItem = 0
+                                                navController.popBackStack()
                                             } else {
                                                 // Handle double back press to exit the app
                                                 if (doubleBackToExitPressedOnce) {
