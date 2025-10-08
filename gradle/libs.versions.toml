@@ -45,6 +45,7 @@ tinkAndroid = "1.18.0"
 workRuntimeKtx = "2.8.1"
 
 [libraries]
+accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanistSwiperefresh" }
 androidx-compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "foundation" }
 animated-navigation-bar = { module = "com.exyte:animated-navigation-bar", version.ref = "animatedNavigationBar" }
 accompanist-swiperefresh = { module = "com.google.accompanist:accompanist-swiperefresh", version.ref = "accompanistSwiperefresh" }

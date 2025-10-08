@@ -61,6 +61,9 @@ android {
 }
 
 dependencies {
+    // Theme
+    implementation(libs.accompanist.systemuicontroller)
+
     // animated navigation bar
     implementation(libs.animated.navigation.bar)
 
