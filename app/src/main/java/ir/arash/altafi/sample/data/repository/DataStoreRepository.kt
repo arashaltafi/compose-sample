@@ -4,9 +4,9 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
-import com.arash.altafi.mvisample.utils.EncryptionUtils
-import com.arash.altafi.mvisample.utils.JsonUtils
-import com.arash.altafi.mvisample.utils.base.BaseRepository
+import ir.arash.altafi.sample.utils.EncryptionUtils
+import ir.arash.altafi.sample.utils.JsonUtils
+import ir.arash.altafi.sample.utils.base.BaseRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map

@@ -1,4 +1,4 @@
-package com.arash.altafi.mvisample.utils.liveData
+package ir.arash.altafi.sample.utils.liveData
 
 import android.util.Log
 import androidx.annotation.MainThread

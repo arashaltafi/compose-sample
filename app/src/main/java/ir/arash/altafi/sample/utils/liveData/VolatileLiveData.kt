@@ -1,4 +1,4 @@
-package com.arash.altafi.mvisample.utils.liveData
+package ir.arash.altafi.sample.utils.liveData
 
 import androidx.annotation.MainThread
 import androidx.lifecycle.LifecycleOwner

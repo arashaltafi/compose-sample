@@ -1,4 +1,4 @@
-package com.arash.altafi.mvisample.utils
+package ir.arash.altafi.sample.utils
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalConfiguration

@@ -1,4 +1,4 @@
-package com.arash.altafi.mvisample.ui.component
+package ir.arash.altafi.sample.ui.component
 
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.background

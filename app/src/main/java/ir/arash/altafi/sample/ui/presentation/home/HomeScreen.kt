@@ -17,8 +17,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.arash.altafi.mvisample.ui.base.ApiState
-import ir.arash.altafi.sample.ui.base.BaseScreen
+import ir.arash.altafi.sample.utils.base.ApiState
+import ir.arash.altafi.sample.utils.base.BaseScreen
 import ir.arash.altafi.sample.ui.theme.CustomFont
 
 @Composable

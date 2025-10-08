@@ -12,8 +12,8 @@ import ir.arash.altafi.sample.data.repository.UserRepository
 import ir.arash.altafi.sample.data.repository.DataStoreRepository
 import ir.arash.altafi.sample.data.repository.PagingRepository
 import ir.arash.altafi.sample.data.repository.TestRepository
-import com.arash.altafi.mvisample.utils.EncryptionUtils
-import com.arash.altafi.mvisample.utils.JsonUtils
+import ir.arash.altafi.sample.utils.EncryptionUtils
+import ir.arash.altafi.sample.utils.JsonUtils
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

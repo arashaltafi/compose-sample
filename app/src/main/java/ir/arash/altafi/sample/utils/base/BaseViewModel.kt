@@ -2,19 +2,27 @@ package ir.arash.altafi.sample.utils.base
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.SharedFlow
-import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-abstract class BaseViewModel : ViewModel() {
-    // A shared flow to emit error messages (could be used for showing toasts, etc.)
-    protected val _error = MutableSharedFlow<String>()
-    val error: SharedFlow<String> = _error.asSharedFlow()
+abstract class BaseViewModel<T> : ViewModel() {
 
-    protected fun handleError(e: Throwable) {
+    protected val _apiState = MutableStateFlow<ApiState<T>>(ApiState.Loading)
+    val apiState: StateFlow<ApiState<T>> = _apiState
+
+    protected fun <R> launchData(
+        block: suspend () -> R,
+        onSuccess: (R) -> Unit,
+        onError: (String) -> Unit = { _apiState.value = ApiState.Error(it) }
+    ) {
         viewModelScope.launch {
-            _error.emit(e.localizedMessage ?: "An error occurred")
+            try {
+                val result = block()
+                onSuccess(result)
+            } catch (e: Exception) {
+                onError(e.localizedMessage ?: "Unknown Error")
+            }
         }
     }
 }

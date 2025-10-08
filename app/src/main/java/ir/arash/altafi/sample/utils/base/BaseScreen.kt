@@ -1,4 +1,4 @@
-package ir.arash.altafi.sample.ui.base
+package ir.arash.altafi.sample.utils.base
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -20,7 +20,6 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.arash.altafi.mvisample.ui.base.ApiState
 import ir.arash.altafi.sample.ui.theme.CustomFont
 import kotlinx.coroutines.launch
 import ir.arash.altafi.sample.R

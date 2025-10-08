@@ -1,4 +1,4 @@
-package com.arash.altafi.mvisample.utils
+package ir.arash.altafi.sample.utils
 
 import com.google.gson.Gson
 import com.google.gson.JsonElement

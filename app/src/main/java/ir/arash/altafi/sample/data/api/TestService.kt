@@ -1,7 +1,7 @@
 package ir.arash.altafi.sample.data.api
 
 import ir.arash.altafi.sample.data.model.TestDetailEntity
-import com.arash.altafi.mvisample.utils.base.BaseService
+import ir.arash.altafi.sample.utils.base.BaseService
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

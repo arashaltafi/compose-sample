@@ -1,4 +1,4 @@
-package com.arash.altafi.mvisample.ui.component
+package ir.arash.altafi.sample.ui.component
 
 import android.Manifest
 import android.content.Context
@@ -45,7 +45,7 @@ import androidx.compose.ui.zIndex
 import androidx.navigation.NavController
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import com.arash.altafi.mvisample.utils.PermissionUtils
+import ir.arash.altafi.sample.utils.PermissionUtils
 import ir.arash.altafi.sample.utils.ext.saveImage
 import ir.arash.altafi.sample.utils.ext.saveImageBlow29
 import kotlinx.coroutines.withContext

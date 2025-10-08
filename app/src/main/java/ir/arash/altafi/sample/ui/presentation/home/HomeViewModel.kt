@@ -3,8 +3,8 @@ package ir.arash.altafi.sample.ui.presentation.home
 import androidx.lifecycle.viewModelScope
 import ir.arash.altafi.sample.data.model.TestDetailEntity
 import ir.arash.altafi.sample.data.repository.TestRepository
-import com.arash.altafi.mvisample.ui.base.ApiState
-import com.arash.altafi.mvisample.ui.base.BaseViewModel
+import ir.arash.altafi.sample.utils.base.ApiState
+import ir.arash.altafi.sample.utils.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

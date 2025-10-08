@@ -1,4 +1,4 @@
-package com.arash.altafi.mvisample.utils
+package ir.arash.altafi.sample.utils
 
 import android.Manifest
 import android.annotation.SuppressLint

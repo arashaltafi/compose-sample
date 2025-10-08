@@ -2,7 +2,7 @@ package ir.arash.altafi.sample.di
 
 import android.content.Context
 import androidx.datastore.preferences.preferencesDataStore
-import com.arash.altafi.mvisample.utils.EncryptionUtils
+import ir.arash.altafi.sample.utils.EncryptionUtils
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

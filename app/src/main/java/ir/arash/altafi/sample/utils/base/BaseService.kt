@@ -1,3 +1,3 @@
-package com.arash.altafi.mvisample.utils.base
+package ir.arash.altafi.sample.utils.base
 
 interface BaseService

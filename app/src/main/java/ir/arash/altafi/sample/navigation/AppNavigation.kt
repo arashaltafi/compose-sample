@@ -15,8 +15,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.pager.HorizontalPager
-import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -42,9 +40,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.compose.*
 import androidx.navigation.toRoute
-import com.arash.altafi.mvisample.ui.component.ImageScreen
-import ir.arash.altafi.sample.ui.presentation.celebrity.CelebrityScreen
-import com.arash.altafi.mvisample.ui.presentation.main.MainScreen
+import ir.arash.altafi.sample.ui.component.ImageScreen
+import ir.arash.altafi.sample.ui.presentation.main.MainScreen
 import ir.arash.altafi.sample.R
 import ir.arash.altafi.sample.ui.component.BackPressHandler
 import ir.arash.altafi.sample.ui.component.ImageUrl
@@ -57,7 +54,6 @@ import ir.arash.altafi.sample.ui.presentation.test.TestScreen
 import ir.arash.altafi.sample.ui.presentation.testDetail.TestDetail
 import ir.arash.altafi.sample.ui.presentation.testList.TestList
 import ir.arash.altafi.sample.ui.presentation.testPagingList.TestPagingList
-import ir.arash.altafi.sample.ui.presentation.user.UserScreen
 import ir.arash.altafi.sample.ui.theme.CustomFont
 import ir.arash.altafi.sample.ui.theme.SampleTheme
 import kotlinx.coroutines.delay
@@ -75,10 +71,6 @@ fun AppNavigation() {
     val packageName = context.packageName
 
     val isHome = currentDestination == packageName + Route.Home.route
-
-    Log.i("test123321", "isHome: $isHome")
-    Log.i("test123321", "AppNavigation: $currentDestination")
-    Log.i("test123321", "Route.Home.route: ${Route.Home.route}")
 
     var isScrolled by remember { mutableStateOf(false) }
 
@@ -326,7 +318,10 @@ fun AppNavigation() {
                                                 } else if (navController.previousBackStackEntry != null && navigationSelectedItem != 0) {
                                                     // Pop the backstack if there is a previous route
                                                     navigationSelectedItem = 0
-                                                    navController.popBackStack()
+                                                    navController.navigate(Route.Home) {
+                                                        popUpTo(0)
+                                                        launchSingleTop = true
+                                                    }
                                                 } else if (isHome) {
                                                     // Handle double back press to exit the app
                                                     if (doubleBackToExitPressedOnce) {
@@ -422,7 +417,7 @@ fun AppNavigation() {
                                             }
                                         },
                                         onClick = {
-                                            if (index != 1) navigationSelectedItem = index
+                                            if (index != 0) navigationSelectedItem = index
                                             navController.navigate(navigationItem.route)
                                         },
                                         colors = NavigationBarItemDefaults.colors(
@@ -480,12 +475,6 @@ fun AppNavigation() {
                     }
                     composable<Route.Main2> {
                         MainScreen2(navController)
-                    }
-                    composable<Route.User> {
-                        UserScreen(navController)
-                    }
-                    composable<Route.Celebrity> {
-                        CelebrityScreen(navController)
                     }
                     composable<Route.Paging> {
                         PagingScreen(navController)

@@ -3,7 +3,7 @@ package ir.arash.altafi.sample
 import androidx.hilt.work.HiltWorkerFactory
 import androidx.multidex.MultiDexApplication
 import androidx.work.Configuration
-import com.arash.altafi.mvisample.utils.language.LocaleUtils
+import ir.arash.altafi.sample.utils.language.LocaleUtils
 import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
 

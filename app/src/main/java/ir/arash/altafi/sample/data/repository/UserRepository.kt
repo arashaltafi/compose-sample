@@ -1,7 +1,7 @@
 package ir.arash.altafi.sample.data.repository
 
 import ir.arash.altafi.sample.data.api.UserService
-import com.arash.altafi.mvisample.utils.base.BaseRepository
+import ir.arash.altafi.sample.utils.base.BaseRepository
 import javax.inject.Inject
 
 class UserRepository @Inject constructor(

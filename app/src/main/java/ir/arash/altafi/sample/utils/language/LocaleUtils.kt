@@ -1,4 +1,4 @@
-package com.arash.altafi.mvisample.utils.language
+package ir.arash.altafi.sample.utils.language
 
 import android.annotation.SuppressLint
 import android.content.Context

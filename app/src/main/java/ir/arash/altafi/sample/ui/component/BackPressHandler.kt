@@ -7,6 +7,7 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
+import ir.arash.altafi.sample.navigation.Route
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -24,8 +25,11 @@ fun BackPressHandler(
     BackHandler {
         if (navController.previousBackStackEntry != null) {
             // Pop the backstack if there is a previous route
-            navController.popBackStack()
             onNavigationItemSelected(0)
+            navController.navigate(Route.Home) {
+                popUpTo(0)
+                launchSingleTop = true
+            }
         } else {
             // Handle double back press to exit the app
             if (doubleBackToExitPressedOnce) {

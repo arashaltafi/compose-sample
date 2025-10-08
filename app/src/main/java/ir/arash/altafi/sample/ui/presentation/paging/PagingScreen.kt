@@ -20,8 +20,8 @@ import androidx.navigation.NavHostController
 import ir.arash.altafi.sample.data.model.UserResponse
 import androidx.paging.compose.collectAsLazyPagingItems
 import coil3.compose.SubcomposeAsyncImage
-import com.arash.altafi.mvisample.ui.component.LoadingImageEffect
-import com.arash.altafi.mvisample.ui.component.LoadingShimmerEffect
+import ir.arash.altafi.sample.ui.component.LoadingImageEffect
+import ir.arash.altafi.sample.ui.component.LoadingShimmerEffect
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import kotlinx.coroutines.delay

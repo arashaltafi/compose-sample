@@ -1,4 +1,4 @@
-package com.arash.altafi.mvisample.utils.base
+package ir.arash.altafi.sample.utils.base
 
 import ir.arash.altafi.sample.utils.ext.flowIO
 import kotlinx.coroutines.Dispatchers

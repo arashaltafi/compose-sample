@@ -1,4 +1,4 @@
-package com.arash.altafi.mvisample.ui.base
+package ir.arash.altafi.sample.utils.base
 
 sealed class ApiState<out T> {
     object Loading : ApiState<Nothing>()

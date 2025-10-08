@@ -1,4 +1,4 @@
-package com.arash.altafi.mvisample.ui.component
+package ir.arash.altafi.sample.ui.component
 
 import androidx.compose.foundation.Image
 import androidx.compose.runtime.Composable

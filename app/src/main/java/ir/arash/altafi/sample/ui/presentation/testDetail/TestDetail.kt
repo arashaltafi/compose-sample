@@ -11,8 +11,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil3.compose.AsyncImage
 import ir.arash.altafi.sample.data.model.TestDetailEntity
-import com.arash.altafi.mvisample.ui.base.ApiState
-import ir.arash.altafi.sample.ui.base.BaseScreen
+import ir.arash.altafi.sample.utils.base.ApiState
+import ir.arash.altafi.sample.utils.base.BaseScreen
 
 @Composable
 fun TestDetail(

@@ -1,4 +1,4 @@
-package com.arash.altafi.mvisample.ui.presentation.main
+package ir.arash.altafi.sample.ui.presentation.main
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.pager.*
@@ -8,9 +8,9 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import ir.arash.altafi.sample.ui.presentation.celebrity.CelebrityScreen
+import ir.arash.altafi.sample.ui.presentation.home.HomeScreen
 import ir.arash.altafi.sample.ui.presentation.paging.PagingScreen
-import ir.arash.altafi.sample.ui.presentation.user.UserScreen
+import ir.arash.altafi.sample.ui.presentation.testList.TestList
 import kotlinx.coroutines.launch
 
 @Composable
@@ -47,8 +47,8 @@ fun MainScreen(navController: NavHostController) {
             state = pagerState
         ) { page ->
             when (page) {
-                0 -> UserScreen(navController)
-                1 -> CelebrityScreen(navController)
+                0 -> TestList(navController)
+                1 -> HomeScreen(navController)
                 2 -> PagingScreen(navController)
             }
         }

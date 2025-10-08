@@ -27,16 +27,6 @@ sealed interface Route {
     }
 
     @Serializable
-    data object User : Route {
-        override val route: String = ".ui.navigation.Route.User"
-    }
-
-    @Serializable
-    data object Celebrity : Route {
-        override val route: String = ".ui.navigation.Route.Celebrity"
-    }
-
-    @Serializable
     data object Paging : Route {
         override val route: String = ".ui.navigation.Route.Paging"
     }
