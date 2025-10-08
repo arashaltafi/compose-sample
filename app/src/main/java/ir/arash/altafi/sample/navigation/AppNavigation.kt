@@ -46,6 +46,7 @@ import com.arash.altafi.mvisample.ui.component.ImageScreen
 import ir.arash.altafi.sample.ui.presentation.celebrity.CelebrityScreen
 import com.arash.altafi.mvisample.ui.presentation.main.MainScreen
 import ir.arash.altafi.sample.R
+import ir.arash.altafi.sample.ui.component.BackPressHandler
 import ir.arash.altafi.sample.ui.component.ImageUrl
 import ir.arash.altafi.sample.ui.presentation.home.HomeScreen
 import ir.arash.altafi.sample.ui.presentation.main.MainScreen2
@@ -317,46 +318,48 @@ fun AppNavigation() {
                                             tint = Color.White
                                         )
                                     }
-                                    IconButton(
-                                        onClick = {
-                                            if (currentDestination !in allowBottomBar) {
-                                                navController.popBackStack()
-                                            } else if (navController.previousBackStackEntry != null && navigationSelectedItem != 0) {
-                                                // Pop the backstack if there is a previous route
-                                                navigationSelectedItem = 0
-                                                navController.popBackStack()
-                                            } else if (isHome) {
-                                                // Handle double back press to exit the app
-                                                if (doubleBackToExitPressedOnce) {
-                                                    // Exit the app if back is pressed twice within 5 seconds
-                                                    activity?.finish()
-                                                } else {
-                                                    // Show the toast message and start a 5-second timer
-                                                    doubleBackToExitPressedOnce = true
-                                                    Toast.makeText(
-                                                        context,
-                                                        "برای خروج یک بار دیگر دکمه برگشت را بزنید",
-                                                        Toast.LENGTH_SHORT
-                                                    )
-                                                        .show()
+                                    AnimatedVisibility(visible = !isHome) {
+                                        IconButton(
+                                            onClick = {
+                                                if (currentDestination !in allowBottomBar) {
+                                                    navController.popBackStack()
+                                                } else if (navController.previousBackStackEntry != null && navigationSelectedItem != 0) {
+                                                    // Pop the backstack if there is a previous route
+                                                    navigationSelectedItem = 0
+                                                    navController.popBackStack()
+                                                } else if (isHome) {
+                                                    // Handle double back press to exit the app
+                                                    if (doubleBackToExitPressedOnce) {
+                                                        // Exit the app if back is pressed twice within 5 seconds
+                                                        activity?.finish()
+                                                    } else {
+                                                        // Show the toast message and start a 5-second timer
+                                                        doubleBackToExitPressedOnce = true
+                                                        Toast.makeText(
+                                                            context,
+                                                            "برای خروج یک بار دیگر دکمه برگشت را بزنید",
+                                                            Toast.LENGTH_SHORT
+                                                        )
+                                                            .show()
 
-                                                    // Reset the flag after 5 seconds using coroutine
-                                                    coroutineScope.launch {
-                                                        delay(5000)  // 5-second delay
-                                                        doubleBackToExitPressedOnce = false
+                                                        // Reset the flag after 5 seconds using coroutine
+                                                        coroutineScope.launch {
+                                                            delay(5000)  // 5-second delay
+                                                            doubleBackToExitPressedOnce = false
+                                                        }
                                                     }
+                                                } else {
+                                                    navController.popBackStack()
                                                 }
-                                            } else {
-                                                navController.popBackStack()
-                                            }
-                                        },
-                                    ) {
-                                        Icon(
-                                            modifier = Modifier.rotate(180f),
-                                            painter = painterResource(id = R.drawable.round_arrow_back_24),
-                                            contentDescription = "Back",
-                                            tint = Color.White
-                                        )
+                                            },
+                                        ) {
+                                            Icon(
+                                                modifier = Modifier.rotate(180f),
+                                                painter = painterResource(id = R.drawable.round_arrow_back_24),
+                                                contentDescription = "Back",
+                                                tint = Color.White
+                                            )
+                                        }
                                     }
                                 }
                             },
@@ -501,6 +504,11 @@ fun AppNavigation() {
                         val args = backStackEntry.toRoute<Route.TestDetail>()
                         TestDetail(args.userId, navController)
                     }
+                }
+
+                BackPressHandler(navController) { newItem ->
+                    if (currentDestination in allowBottomBar)
+                        navigationSelectedItem = newItem
                 }
             }
         }
