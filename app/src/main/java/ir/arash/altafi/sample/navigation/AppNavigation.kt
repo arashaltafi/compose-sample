@@ -52,7 +52,6 @@ import ir.arash.altafi.sample.ui.presentation.profile.ProfileScreen
 import ir.arash.altafi.sample.ui.presentation.setting.SettingScreen
 import ir.arash.altafi.sample.ui.presentation.test.TestScreen
 import ir.arash.altafi.sample.ui.presentation.testDetail.TestDetail
-import ir.arash.altafi.sample.ui.presentation.testList.TestList
 import ir.arash.altafi.sample.ui.presentation.testPagingList.TestPagingList
 import ir.arash.altafi.sample.ui.theme.CustomFont
 import ir.arash.altafi.sample.ui.theme.SampleTheme
@@ -482,9 +481,6 @@ fun AppNavigation() {
                     composable<Route.ImageScreen> { backStackEntry: NavBackStackEntry ->
                         val args = backStackEntry.toRoute<Route.ImageScreen>()
                         ImageScreen(navController, args.title, args.imageUrl)
-                    }
-                    composable<Route.TestList> {
-                        TestList(navController)
                     }
                     composable<Route.TestPagingList> {
                         TestPagingList(navController)
