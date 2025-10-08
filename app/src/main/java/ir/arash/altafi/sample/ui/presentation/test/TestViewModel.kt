@@ -1,16 +1,16 @@
-package ir.arash.altafi.sample.ui.presentation.testList
+package ir.arash.altafi.sample.ui.presentation.test
 
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import ir.arash.altafi.sample.data.model.TestDetailEntity
 import ir.arash.altafi.sample.data.repository.TestRepository
 import ir.arash.altafi.sample.utils.base.ApiState
 import ir.arash.altafi.sample.utils.base.BaseViewModel
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class TestListViewModel @Inject constructor(
+class TestViewModel @Inject constructor(
     private val repository: TestRepository
 ) : BaseViewModel<List<TestDetailEntity>>() {
 

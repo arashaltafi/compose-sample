@@ -10,7 +10,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import ir.arash.altafi.sample.ui.presentation.home.HomeScreen
 import ir.arash.altafi.sample.ui.presentation.paging.PagingScreen
-import ir.arash.altafi.sample.ui.presentation.testList.TestList
+import ir.arash.altafi.sample.ui.presentation.test.TestScreen
 import kotlinx.coroutines.launch
 
 @Composable
@@ -47,7 +47,7 @@ fun MainScreen(navController: NavHostController) {
             state = pagerState
         ) { page ->
             when (page) {
-                0 -> TestList(navController)
+                0 -> TestScreen(navController)
                 1 -> HomeScreen(navController)
                 2 -> PagingScreen(navController)
             }

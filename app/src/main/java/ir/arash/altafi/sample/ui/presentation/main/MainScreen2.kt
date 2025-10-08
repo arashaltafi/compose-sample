@@ -8,14 +8,14 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import ir.arash.altafi.sample.ui.presentation.test.TestScreen
 import ir.arash.altafi.sample.ui.presentation.testDetail.TestDetail
-import ir.arash.altafi.sample.ui.presentation.testList.TestList
 import ir.arash.altafi.sample.ui.presentation.testPagingList.TestPagingList
 import kotlinx.coroutines.launch
 
 @Composable
 fun MainScreen2(navController: NavHostController) {
-    val tabs = listOf("TestList", "TestPagingList", "TestDetail")
+    val tabs = listOf("Test", "TestPagingList", "TestDetail")
     val pagerState = rememberPagerState(
         pageCount = { tabs.size },
         initialPage = 0
@@ -47,7 +47,7 @@ fun MainScreen2(navController: NavHostController) {
             state = pagerState
         ) { page ->
             when (page) {
-                0 -> TestList(navController)
+                0 -> TestScreen(navController)
                 1 -> TestPagingList(navController)
                 2 -> TestDetail(
                     "1", navController
